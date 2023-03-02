@@ -6,27 +6,15 @@ const UseState = () => {
   const [theme, setTheme] = useState("light");
   const [count, setCount] = useState(0);
 
-  const handleClickDark = () => {
-    setTheme("dark");
-  };
-  const handleClickLight = () => {
-    setTheme("light");
-  };
-  const handleClickIncrement = () => {
-    setCount((count) => count + 1);
-  };
-  const handleClickDecrement = () => {
-    setCount((count) => count - 1);
-  };
-
   return (
-    <div className={classNames(theme, "text")}>
+    <div className={classNames([theme, "state"])}>
       <h1>UseState Component</h1>
-      <button onClick={handleClickLight}>Light</button>
-      <button onClick={handleClickDark}>Dark</button>
+      <button onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
+        Change Theme
+      </button>
       <h1>{count}</h1>
-      <button onClick={handleClickIncrement}>Increment</button>
-      <button onClick={handleClickDecrement}>Decrement</button>
+      <button onClick={() => setCount((count) => count + 1)}>Increment</button>
+      <button onClick={() => setCount((count) => count - 1)}>Decrement</button>
     </div>
   );
 };
